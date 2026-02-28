@@ -1,7 +1,6 @@
 let historyData = [];
 
 function calculate(type) {
-
     let num1 = parseFloat(document.getElementById("firstNumber").value);
     let num2 = parseFloat(document.getElementById("secondNumber").value);
     let result;
@@ -11,45 +10,39 @@ function calculate(type) {
         return;
     }
 
-    if (type === "add") {
-        result = num1 + num2;
-    } 
-    else if (type === "sub") {
-        result = num1 - num2;
-    } 
-    else if (type === "mul") {
-        result = num1 * num2;
-    } 
-    else if (type === "div") {
-        if (num2 === 0) {
-            document.getElementById("result").innerText = "Cannot divide by zero";
+    switch (type) {
+        case "add":
+            result = num1 + num2;
+            break;
+        case "sub":
+            result = num1 - num2;
+            break;
+        case "mul":
+            result = num1 * num2;
+            break;
+        case "div":
+            if (num2 === 0) {
+                document.getElementById("result").innerText = "Cannot divide by zero";
+                return;
+            }
+            result = num1 / num2;
+            break;
+        default:
             return;
-        }
-        result = num1 / num2;
     }
 
     document.getElementById("result").innerText = result;
-
     addToHistory(num1, num2, type, result);
 }
 
 function addToHistory(a, b, operation, answer) {
-
-    let symbol;
-
-    if (operation === "add") symbol = "+";
-    if (operation === "sub") symbol = "-";
-    if (operation === "mul") symbol = "*";
-    if (operation === "div") symbol = "/";
-
-    let record = a + " " + symbol + " " + b + " = " + answer;
-
+    const symbols = { add: "+", sub: "-", mul: "×", div: "÷" };
+    let record = `${a} ${symbols[operation]} ${b} = ${answer}`;
     historyData.push(record);
     updateHistory();
 }
 
 function updateHistory() {
-
     let list = document.getElementById("historyList");
     list.innerHTML = "";
 
