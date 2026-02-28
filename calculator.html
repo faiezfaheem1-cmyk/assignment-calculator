@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <h1 class="bg-primary p-5 text-center text-light">Calculator</h1>
+
+    <div class="container mt-5">
+        <div class="row">
+
+            <!-- Calculator -->
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        Simple Calculator
+                    </div>
+                    <div class="card-body">
+
+                        <div class="mb-3">
+                            <label class="form-label">First Number</label>
+                            <input type="number" id="firstNumber" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Second Number</label>
+                            <input type="number" id="secondNumber" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <button class="btn btn-success me-2" onclick="calculate('add')">Add</button>
+                            <button class="btn btn-danger me-2" onclick="calculate('sub')">Subtract</button>
+                            <button class="btn btn-warning me-2" onclick="calculate('mul')">Multiply</button>
+                            <button class="btn btn-info" onclick="calculate('div')">Divide</button>
+                        </div>
+
+                        <h5>Result:</h5>
+                        <div id="result" class="alert alert-secondary">0</div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- History -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center bg-secondary text-white">
+                        <span>History</span>
+                        <button class="btn btn-sm btn-light" onclick="clearHistory()">Clear</button>
+                    </div>
+                    <div class="card-body" style="max-height:300px; overflow-y:auto;">
+                        <ul id="historyList" class="list-group list-group-flush">
+                            <li class="list-group-item text-muted">No calculations yet</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="calculator.js"></script>
+</body>
+
+</html>
